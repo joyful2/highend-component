@@ -7,7 +7,7 @@ class Provider extends React.Component {
 
   static childContextTypes = {
     name: PropTypes.string,
-    age: PropTypes.number,
+     age: PropTypes.number,
   };
 
   constructor(props) {

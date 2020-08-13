@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import PropTypes from 'prop-types'
+import reactDom from "react-dom";
 
 // 用于预先 将业务组件，进行数据的封装，便于我们 方便获取数据
 // 反向继承 交互的封装，
@@ -39,3 +40,5 @@ class App extends Component{
 
 
 export default App
+
+ 

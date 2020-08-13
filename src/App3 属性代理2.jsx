@@ -16,19 +16,22 @@ const connect = (key) => (Com) => {
       return <Com {...this.state} />;
     }
 
-    componentDidMount() {
+    componentDidMount() { 
+      // window.com = this; // 把组件暴露到console，方便调试
       let that = this;
-      window.store = new Proxy(store, {
+      window.store = new Proxy(store, {  // 通过Proxy代理拦截和监听改变
         get: function (target, key, receiver) {
           return Reflect.get(target, key, receiver);
         },
         set: function (target, key, value, receiver) {
-          that.setState({
+           that.setState({
             [key]: value,
           });
           return Reflect.set(target, key, value, receiver);
         },
       });
+
+   
     }
   }
   return connectComponent;
@@ -39,13 +42,14 @@ let store = {
   age: 10,
 };
 
-@connect("age") // todo: 这里是等于 User = connect(User)('age') 还是connect(User)('age')？
+@connect("age") // todo: 这里是等于 User = connect('age')(User)  
 class User extends Component {
   render() {
     return <div>{this.props.age}</div>;
   }
 }
-
+  // User = connect('age')(User)
+console.log('User:',User);
 class App extends Component {
   render() {
     return <User />;
