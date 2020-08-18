@@ -19,6 +19,7 @@ class User extends React.Component {
 }
 
 class App extends React.Component {
+  // todo: 找一个render props的实战demo
   render() {
     return <Provider render={(data) => <User data={data} />} />;
   }
